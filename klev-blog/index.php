@@ -43,7 +43,9 @@
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-lg-3">
-                                <img class="img-fluid rounded-start" src="img/<?php echo $film["imageUrl"]?>">                          
+                                <a href="blog-details.php?id=<?php echo $film["id"]?>" class="d-block"> 
+                                     <img class="img-fluid rounded-start" src="img/<?php echo $film["imageUrl"]?>">     
+                                </a>                        
                             </div>
                             <div class="col-9 d-flex flex-column justify-items-between">
                             <a href="blog-details.php?id=<?php echo $film["id"]?>" class="link-secondary"> <div class="card-header">
