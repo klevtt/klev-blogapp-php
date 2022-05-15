@@ -48,11 +48,11 @@
 
                                 header("location: profile.php");
                             } else {
-                                $login_err = "yanlış parola girdiniz";
+                                $login_err = "Yanlış Username veya Parola Girdiniz";
                             }
                         } 
                     } else {
-                        $login_err = "yanlış username girdiniz";
+                        $login_err = "Yanlış Username veya Parola Girdiniz";
                     }
                 } else {
                     $login_err = "bilinmeyen bir hata oluştu.";
