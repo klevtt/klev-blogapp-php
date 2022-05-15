@@ -65,8 +65,70 @@
             <form method="POST" enctype="multipart/form-data">
                 <div class="row">
                     
-                    <div class="col-9">
+                    <div class="col-md-9"> <button class="d-block d-md-none btn text-secondary float-end mb-2 border border-1 border-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-funnel"></i> Kategori & Active</button>
+                    <div class="offcanvas offcanvas-end bg-dark text-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body px-3">
+                        <div class="row">
+                                
+                        <div class="col-12">
+                                        
+                                        <?php foreach ($categories as $c): ?>
+                                            <div class="form-check">
+                                                <label for="category_<?php echo $c["id"]?>" class="my-1"> <?php echo $c["name"]?> </label>
+                                                
+                                                <input type="checkbox" name="categories[]"
+                                                id="category_<?php echo $c["id"]?>" 
+                                                class="form-check-input" 
+                                                value="<?php echo $c["id"]?>" 
+                                                
+                                                    <?php
+                                                        $isChecked = false;
+                
+                                                        foreach ($selectedCategories as $s) {
+                                                            if ($s["id"] == $c["id"]) {
+                                                                $isChecked = true;
+                                                            }
+                                                        }
+                
+                                                        if($isChecked) {
+                                                            echo "checked";
+                                                        }                                
+                                                    
+                                                    ?>
+                                                
+                                                
+                                                
+                                                >
+                                            </div>
+                                        <?php endforeach; ?>
+                
+                                        <hr>
+                
+                                        <div class="form-check mb-3">
+                                            <label for="isActive" class="form-check-label">is active</label>
+                                            <input type="checkbox" class="form-check-input" name="isActive" id="isActive" <?php if ($selectedMovie["isActive"]) {echo "checked";}?>>
+                                        </div>    
+                
+                                        <div class="form-check mb-3">
+                                            <label for="isHome" class="form-check-label">is home</label>
+                                            <input type="checkbox" class="form-check-input" name="isHome" id="isHome" <?php if ($selectedMovie["isHome"]) {echo "checked";}?>>
+                                        </div>    
+                
+                                        <hr><div class=" img-thumbnail border-dark">
+        
+                                        <img class="img-fluid" src="img/<?php echo $selectedMovie["imageUrl"] ?>" alt="<?php echo $blog["title"] ?>">
+                                        <p class="m-0 py-1 text-center "><?php echo $selectedMovie["title"]?></p> 
+                            </div>
+                                                            
+                                    </div> 
+                        </div>
 
+                        </div>  
+                    </div>
                         <div id="edit-form">
 
                                 <div class="mb-3">
@@ -108,11 +170,21 @@
 
                     </div>   
 
-                    <div class="col-3">
+
+
+
+                    
+
+
+
+
+
+                    <div class="col-3 d-none d-md-block">
                                     
                         <?php foreach ($categories as $c): ?>
                             <div class="form-check">
-                                <label for="category_<?php echo $c["id"]?>"><?php echo $c["name"]?></label>
+                                <label for="category_<?php echo $c["id"]?>"> <?php echo $c["name"]?> </label>
+                                
                                 <input type="checkbox" name="categories[]"
                                 id="category_<?php echo $c["id"]?>" 
                                 class="form-check-input" 
